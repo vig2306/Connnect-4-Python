@@ -4,7 +4,12 @@ import os
 from PIL import ImageTk, Image
 
 def call_game():
+    root.destroy()
     os.system("python game.py")
+
+def call_gui():
+    root.destroy()
+    os.system("python gui.py")
 
 root = Tk()
 root.title("Connect-4")
@@ -28,7 +33,7 @@ canvas.pack(side="right")
 button1 = ttk.Button(root, text="Play Again", width=18, command=call_game)
 button1.place(relx =0.15, rely=0.4, anchor=W)
 
-button2 = ttk.Button(root, text="Main Menu", width=18, command= frame.quit)
+button2 = ttk.Button(root, text="Main Menu", width=18, command= call_gui)
 button2.place(relx=0.55, rely=0.4, anchor=W)
 
         

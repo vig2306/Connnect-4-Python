@@ -5,15 +5,14 @@ from PIL import ImageTk, Image
 import os
 
 def call_window_Two_player():
-    root.iconify()
-    os.system("python3 game.py")
-    root.deiconify()
+    root.destroy()
+    os.system("python game.py")
     
 
 def call_window_One_player():
-    root.iconify()
-    os.system("python3 game_ai.py")
-    root.deiconify()
+    root.destroy()
+    os.system("python game_ai.py")
+    
 
 root = Tk()
 root.title("Connect-4")
