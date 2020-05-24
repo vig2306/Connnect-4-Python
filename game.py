@@ -2,16 +2,21 @@ import numpy as np
 import pygame
 import sys
 import math
+import os
 
 ROWS_TOT = 7
 COLS_TOT = 7
 
-Blue = (0,0,255)
-Black = (0,0,0)
-Red = (255,0,0)
-Yellow = (255,255,0)
+BLUE=(29, 59, 181)
+BLACK = (0,0,0)
+RED = (255,0,0)
+YELLOW = (255,255,0)
 
-# Creates board board
+# play again
+def play_again():
+    os.system("python play_again.py")
+
+# Creates board
 def create_board():
     board = np.zeros((ROWS_TOT,COLS_TOT),dtype=int)
     return board
@@ -71,20 +76,19 @@ def switch_player(player):
 def game_board(board):
     for c in range(COLS_TOT):
         for r in range(ROWS_TOT):
-            pygame.draw.rect(screen, Blue , (c*Board_size, r*Board_size+Board_size, Board_size, Board_size))
-            pygame.draw.circle(screen, Black , (int(c*Board_size+Board_size/2), int(r*Board_size+Board_size+Board_size/2)), Radius)
+            pygame.draw.rect(screen, BLUE , (c*Board_size, r*Board_size+Board_size, Board_size, Board_size))
+            pygame.draw.circle(screen, BLACK , (int(c*Board_size+Board_size/2), int(r*Board_size+Board_size+Board_size/2)), Radius)
     for c in range(COLS_TOT):
         for r in range(ROWS_TOT):
             if board[r][c] == 1:
-                pygame.draw.circle(screen, Red, (int(c*Board_size+Board_size/2), height-int(r*Board_size+Board_size/2)), Radius)
+                pygame.draw.circle(screen, RED, (int(c*Board_size+Board_size/2), height-int(r*Board_size+Board_size/2)), Radius)
             elif board[r][c] == 2:
-                pygame.draw.circle(screen, Yellow, (int(c*Board_size+Board_size/2), height-int(r*Board_size+Board_size/2)), Radius)
+                pygame.draw.circle(screen, YELLOW, (int(c*Board_size+Board_size/2), height-int(r*Board_size+Board_size/2)), Radius)
     pygame.display.update()
 
 board = create_board()
 show_board(board)
 running = True
-#turn = 0 
 player = 1
 
 pygame.init()
@@ -96,7 +100,7 @@ size = (width,height)
 
 Radius = int(Board_size/2 - 5)
 font = pygame.font.SysFont("Times New Roman" , 80)
-names= pygame.font.SysFont("Times New Roman" , 20)
+names= pygame.font.SysFont("Times New Roman" , 30)
 screen = pygame.display.set_mode(size)
 game_board(board)
 pygame.display.update()
@@ -109,26 +113,26 @@ while running:
             sys.exit()
 
         if event.type == pygame.MOUSEMOTION: 
-            pygame.draw.rect(screen,Black,(0,0,width, Board_size))
-            player1= names.render("Player 1:", 1, Red)
+            pygame.draw.rect(screen,BLACK,(0,0,width, Board_size))
+            player1= names.render("Player 1", 1, RED)
             screen.blit(player1,(20,10))
-            player2= names.render("Player 2:", 1, Yellow)
-            screen.blit(player2,(20,50))
+            player2= names.render("Player 2", 1, YELLOW)
+            screen.blit(player2,(580,10))
 
             position_x = event.pos[0]
             if player == 1:
-                pygame.draw.circle(screen, Red, (position_x, int(Board_size/2)), Radius)
+                pygame.draw.circle(screen, RED, (position_x, int(Board_size/2)), Radius)
             else:
-                pygame.draw.circle(screen, Yellow, (position_x, int(Board_size/2)), Radius)
+                pygame.draw.circle(screen, YELLOW, (position_x, int(Board_size/2)), Radius)
         pygame.display.update()
 
         if event.type == pygame.MOUSEBUTTONDOWN: 
-            pygame.draw.rect(screen,Black,(0,0,width, Board_size))
+            pygame.draw.rect(screen,BLACK,(0,0,width, Board_size))
             
-            player1= names.render("Player 1:", 1, Red)
+            player1= names.render("Player 1", 1, RED)
             screen.blit(player1,(20,10))
-            player2= names.render("Player 2:", 1, Yellow)
-            screen.blit(player2,(20,50))
+            player2= names.render("Player 2", 1, YELLOW)
+            screen.blit(player2,(580,10))
 
             position_x = event.pos[0]
             col = int(math.floor(position_x/100))
@@ -137,16 +141,18 @@ while running:
                 drop_coin(board,row,col,player)
             if check_win(board,player):
                 if player == 1:
-                    winner = font.render("Player 1 wins", 1 , Red)
+                    winner = font.render("Player 1 wins", 1 , RED)
                     screen.blit(winner,(140,10))
                 elif player == 2:
-                    winner = font.render("Player 2 wins", 1 , Yellow)
+                    winner = font.render("Player 2 wins", 1 , YELLOW)
                     screen.blit(winner,(140,10))
                 running = False
             show_board(board)
             game_board(board)
-            if not running:
-                pygame.time.wait(4000)
+            if running == False:
+                pygame.time.wait(1000)
+                pygame.quit()
+                play_again()
             player = switch_player(player)
 
         
