@@ -5,16 +5,20 @@ from PIL import ImageTk, Image
 import os
 
 def call_window_Two_player():
-    os.system("python game.py")
+    root.iconify()
+    os.system("python3 game.py")
+    root.deiconify()
+    
 
 def call_window_One_player():
+    root.iconify()
     os.system("python3 game_ai.py")
+    root.deiconify()
 
 root = Tk()
 root.title("Connect-4")
 root.geometry("600x460")
 root.configure(bg='white')
-
 root.style = ttk.Style() 
 root.style.configure('TButton', font = 
                ('calibri', 20), 
@@ -49,12 +53,3 @@ button3.place(relx=0.1, rely=0.6, anchor=W)
 
         
 root.mainloop()
-
-
-
-
-
-
-
-
-
