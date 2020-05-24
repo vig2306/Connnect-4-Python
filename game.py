@@ -96,18 +96,25 @@ size = (width,height)
 
 Radius = int(Board_size/2 - 5)
 font = pygame.font.SysFont("Times New Roman" , 80)
+names= pygame.font.SysFont("Times New Roman" , 20)
 screen = pygame.display.set_mode(size)
 game_board(board)
 pygame.display.update()
 
 
 while running:
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
 
         if event.type == pygame.MOUSEMOTION: 
             pygame.draw.rect(screen,Black,(0,0,width, Board_size))
+            player1= names.render("Player 1:", 1, Red)
+            screen.blit(player1,(20,10))
+            player2= names.render("Player 2:", 1, Yellow)
+            screen.blit(player2,(20,50))
+
             position_x = event.pos[0]
             if player == 1:
                 pygame.draw.circle(screen, Red, (position_x, int(Board_size/2)), Radius)
@@ -117,6 +124,12 @@ while running:
 
         if event.type == pygame.MOUSEBUTTONDOWN: 
             pygame.draw.rect(screen,Black,(0,0,width, Board_size))
+            
+            player1= names.render("Player 1:", 1, Red)
+            screen.blit(player1,(20,10))
+            player2= names.render("Player 2:", 1, Yellow)
+            screen.blit(player2,(20,50))
+
             position_x = event.pos[0]
             col = int(math.floor(position_x/100))
             if check_pos(board,col):
