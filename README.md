@@ -30,7 +30,7 @@ Play Against AI
 
 ![](demo/ai.gif)
 
-Shopkeeper Interface
+Play Against Human
 
 ![](demo/player.gif)
 
