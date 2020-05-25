@@ -276,6 +276,11 @@ while running:
 
 	# AI plays PLayer 2
     if turn == AI and running:
+        pygame.draw.rect(screen,BLACK,(0,0,width,Board_size))
+        player1=names.render("Player",1,RED)
+        screen.blit(player1,(20,10))
+        player2=names.render("AI",1,YELLOW)
+        screen.blit(player2,(580,10))
         col, minimax_score = minimax(board, 5, -math.inf, math.inf, True)
         
         if check_pos(board,col):

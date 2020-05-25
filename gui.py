@@ -40,10 +40,10 @@ w = Label(root,text="Connect-4",bg='white', fg='steelblue' ,font="none 24 bold")
 w.place(relx = 0.1,rely=0.1)
 
 
-button1 = ttk.Button(root, text="ONE PLAYER", width=20, command= call_window_One_player)
+button1 = ttk.Button(root, text="PLAYER Vs AI", width=20, command= call_window_One_player)
 button1.place(relx =0.1, rely=0.3, anchor=W)
 
-button2 = ttk.Button(root, text="TWO PLAYER", width=20,command= call_window_Two_player)
+button2 = ttk.Button(root, text="PLAYER Vs PLAYER", width=20,command= call_window_Two_player)
 button2.place(relx=0.1, rely=0.45, anchor=W)
 
 button3 = ttk.Button(root, text="EXIT", width=20, command= frame.quit)

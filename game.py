@@ -1,4 +1,5 @@
 import numpy as np
+import random
 import pygame
 import sys
 import math
@@ -12,6 +13,8 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 YELLOW = (255,255,0)
 
+PLAYER1 = 1
+PLAYER2 = 2
 # play again
 def play_again():
     os.system("python play_again.py")
@@ -89,7 +92,7 @@ def game_board(board):
 board = create_board()
 show_board(board)
 running = True
-player = 1
+player = random.randint(PLAYER1, PLAYER2)
 
 pygame.init()
 
