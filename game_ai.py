@@ -23,7 +23,7 @@ AI_COIN = 2
 WINDOW_LENGTH = 4
 
 def play_again():
-    os.system("python play_again.py")
+    os.system("python play_again_ai.py")
 
 # Creates board board
 def create_board():
@@ -299,6 +299,6 @@ while running:
             turn+=1
             turn=turn%2
     if running==False:
-        pygame.time.wait(1500)
+        pygame.time.wait(3000)
         pygame.quit()
         play_again()

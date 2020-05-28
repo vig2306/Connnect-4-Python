@@ -153,7 +153,7 @@ while running:
             show_board(board)
             game_board(board)
             if running == False:
-                pygame.time.wait(1500)
+                pygame.time.wait(3000)
                 pygame.quit()
                 play_again()
             player = switch_player(player)
